@@ -1,5 +1,3 @@
-# ui.py
-
 import streamlit as st
 from dotenv import load_dotenv
 import asyncio
@@ -11,7 +9,7 @@ import plotly.graph_objects as go
 load_dotenv()
 
 # --- 1. SAYFA YAPILANDIRMASI ---
-st.set_page_config(layout="wide", page_title="Fibabanka Portföy Asistanı")
+st.set_page_config(layout="wide", page_title="Portfi Portföy Asistanım")
 
 # --- Ajan Mantığının İçe Aktarılması ---
 try:
@@ -60,17 +58,16 @@ h1, h2, h3 { color: #FFFFFF; }
 .card-container {
     background: rgba(29, 38, 69, 0.5);
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1); /* BU KARTTA KENARLIK VAR */
-    padding: 1.5rem; /* BU KARTTA İÇ BOŞLUK VAR */
-    margin-bottom: 1.5rem; /* BU KARTTA ALT BOŞLUK VAR */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 }
 
-/* --- YENİ: Kenarlıksız, Sade Konteyner (Portföy ve Varlık için) --- */
+/* --- Kenarlıksız, Sade Konteyner (Portföy ve Varlık için) --- */
 .minimal-container {
-    /* Kenarlık, padding ve margin-bottom burada yok */
-    margin-bottom: 2rem; /* Sadece diğer bloğa mesafe için */
+    margin-bottom: 2rem;
 }
 
 /* --- Sohbet Mesajları --- */
@@ -83,17 +80,25 @@ div[data-testid="stChatMessage"] {
 div[data-testid="stChatMessage"] p { margin: 0; }
 
 /* --- Buton Stilleri --- */
-div[data-testid="stButton"] > button {
+div[data-testid="stButton"] > button, div[data-testid="stLinkButton"] > a {
     background-color: #2d385b;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     border: 1px solid #4a5578;
     border-radius: 12px;
     padding: 10px 24px;
     font-weight: 600;
     transition: background-color 0.2s, border-color 0.2s;
+    text-decoration: none;
 }
-div[data-testid="stButton"] > button:hover { background-color: #4a5578; border-color: #6c7a9c; }
-div[data-testid="stButton"] > button:focus { box-shadow: 0 0 0 2px #353C58, 0 0 0 4px #6C7A9C; }
+div[data-testid="stButton"] > button:hover, div[data-testid="stLinkButton"] > a:hover {
+    background-color: #4a5578;
+    border-color: #6c7a9c;
+    color: #FFFFFF !important;
+}
+div[data-testid="stButton"] > button:focus, div[data-testid="stLinkButton"] > a:focus {
+    box-shadow: 0 0 0 2px #353C58, 0 0 0 4px #6C7A9C;
+}
+
 
 /* --- Sohbet Giriş Alanı --- */
 div[data-testid="stChatInput"] { background-color: transparent; border-top: 1px solid rgba(255, 255, 255, 0.1); }
@@ -104,8 +109,11 @@ div[data-testid="stHorizontalBlock"] { gap: 2rem; }
 [data-testid="stVerticalBlock"] > [style*="flex-basis: 66"] { border-right: 1px solid rgba(255, 255, 255, 0.1); padding-right: 2rem; }
 
 /* --- Varlık Dağılımı Legend Stilleri --- */
-.legend-item { display: flex; align-items: center; margin-bottom: 8px; font-size: 14px; color: #E0E0E0; }
+.legend-item { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; font-size: 14px; color: #E0E0E0; }
 .legend-color { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+.legend-text-group { display: flex; align-items: center; }
+
+.legend-item strong { margin-left: auto; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -115,9 +123,13 @@ col_chat, col_data = st.columns([2, 1])
 
 # --- SAĞ SÜTUN: VERİ PANELLERİ ---
 with col_data:
+    # --- EKLENEN SATIR (ADDED LINE) ---
+    st.link_button("Dashboard", "http://localhost:3000", use_container_width=True)
+    st.write("") # Buton ile altındaki içerik arasına boşluk koyar
+
     # Portföy özeti (Kenarlıksız ve Paddingsiz)
     with st.container():
-        st.markdown('<div class="minimal-container">', unsafe_allow_html=True) # DEĞİŞTİRİLDİ
+        st.markdown('<div class="minimal-container">', unsafe_allow_html=True) 
         st.header("Portföy Özeti")
         st.metric(label="Toplam Portföy Değeri", value="₺325.750,42", delta="+2.3%")
         chart_data = pd.DataFrame({'Tarih': ['1 Mar', '1 Nis', '1 Oca', '1 Şub'], 'Değer': [328000, 325750, 315000, 320000]})
@@ -129,7 +141,7 @@ with col_data:
 
     # Varlık dağılımı (Kenarlıksız ve Paddingsiz)
     with st.container():
-        st.markdown('<div class="minimal-container">', unsafe_allow_html=True) # DEĞİŞTİRİLDİ
+        st.markdown('<div class="minimal-container">', unsafe_allow_html=True)
         st.subheader("Varlık Dağılımı")
         labels, values, colors = ['Hisse Senetleri', 'Tahvil/Bono', 'Nakit', 'Altın'], [40, 30, 20, 10], ['#1f77b4', '#2ca02c', '#ff7f0e', '#ffd700']
         fig_donut = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker=dict(colors=colors))])
@@ -141,30 +153,30 @@ with col_data:
             st.plotly_chart(fig_donut, use_container_width=True)
         with col2:
             st.markdown("""
-                <div class="legend-item"><div class="legend-color" style="background-color:#1f77b4;"></div>Hisse <strong>40%</strong></div>
-                <div class="legend-item"><div class="legend-color" style="background-color:#2ca02c;"></div>Tahvil <strong>30%</strong></div>
-                <div class="legend-item"><div class="legend-color" style="background-color:#ff7f0e;"></div>Nakit <strong>20%</strong></div>
-                <div class="legend-item"><div class="legend-color" style="background-color:#ffd700;"></div>Altın <strong>10%</strong></div>
+                <div class="legend-item"><div class="legend-text-group"><div class="legend-color" style="background-color:#1f77b4;"></div>Hisse</div><strong>40%</strong></div>
+                <div class="legend-item"><div class="legend-text-group"><div class="legend-color" style="background-color:#2ca02c;"></div>Tahvil</div><strong>30%</strong></div>
+                <div class="legend-item"><div class="legend-text-group"><div class="legend-color" style="background-color:#ff7f0e;"></div>Nakit</div><strong>20%</strong></div>
+                <div class="legend-item"><div class="legend-text-group"><div class="legend-color" style="background-color:#ffd700;"></div>Altın</div><strong>10%</strong></div>
             """, unsafe_allow_html=True)
         st.button("Tüm Portföyü Görüntüle >", use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
     
-    # Piyasa verileri (Kenarlıklı ve Paddingli - DEĞİŞMEDİ)
+    # Piyasa verileri (Kenarlıklı ve Paddingli)
     with st.container():
         st.markdown('<div class="card-container">', unsafe_allow_html=True)
         st.header("Piyasa Verileri")
         col1, col2 = st.columns(2)
         with col1:
-            st.metric(label="BIST100", value="9,325.42", delta="+1.2%")
-            st.metric(label="EUR/TRY", value="34.80", delta="-0.1%")
+            st.metric(label="BIST100", value="10,366.16", delta="-0.03%")
+            st.metric(label="EUR/TRY", value="46.99", delta="+0.3%")
         with col2:
-            st.metric(label="USD/TRY", value="32.55", delta="-0.3%")
-            st.metric(label="Altın", value="2,150.75", delta="+0.8%")
+            st.metric(label="USD/TRY", value="40.35", delta="+0.46%")
+            st.metric(label="Gram Altın (₺)", value="4,352.40", delta="±0.0%")
         st.markdown('</div>', unsafe_allow_html=True)
 
 # --- SOL SÜTUN: SOHBET ARAYÜZÜ ---
 with col_chat:
-    st.title("📈 Fibabanka Portföy Asistanı")
+    st.title("Portfi Portföy Asistanım")
     st.caption("Riskometre verileri ve yapay zeka ile yatırımlarınızı yönetin.")
 
     # Oturum Durumu ve Sohbet Geçmişi
