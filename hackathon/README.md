@@ -1,6 +1,6 @@
 # Portfi: Akıllı Portföy Yönetim Asistanı (Hackathon Projesi)
 
-**Portfi**, kullanıcıların yatırım kararlarını, Fibabanka'nın haftalık **Riskometre** raporları ve gelişmiş yapay zeka ajanları ile destekleyen bir portföy yönetim platformudur. Bu proje, `nazayis-hackathon-mcp` kapsamında, karmaşık finansal verileri basitleştirerek ve kişiselleştirilmiş yatırım stratejileri sunarak son kullanıcıya akıllı bir finansal asistan deneyimi yaşatmayı hedefler.
+**Portfi**, kullanıcıların yatırım kararlarını, Fibabanka'nın haftalık **Riskometre** raporları ve gelişmiş yapay zeka ajanları ile destekleyen bir portföy yönetim platformudur. Bu proje, `hackathon-mcp` kapsamında, karmaşık finansal verileri basitleştirerek ve kişiselleştirilmiş yatırım stratejileri sunarak son kullanıcıya akıllı bir finansal asistan deneyimi yaşatmayı hedefler.
 
 ## 🚀 Temel Özellikler
 
