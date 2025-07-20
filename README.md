@@ -107,4 +107,4 @@ Portfi'yi geliştirirken kullanıcı deneyimini en üst seviyeye taşımayı hed
 Görüş, öneri veya geri bildiriminiz varsa bizimle paylaşmaktan çekinmeyin.
 👉 Fibabanka kanallarından bize doğrudan ulaşabilirsiniz!
 
-made with 💝
+                                                                                                                                            made with 💝
