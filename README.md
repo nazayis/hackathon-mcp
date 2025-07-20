@@ -101,3 +101,10 @@ Uygulama açıldığında, "💰 55.000 TL yatırım senaryosunu dene" butonuna 
 ## Agent Yapısı (agent.py)
 
 <img width="910" height="824" alt="image" src="https://github.com/user-attachments/assets/56a4005d-c576-441e-9682-5d27545cd22a" />
+
+## 💬 Görüşleriniz Bizim İçin Değerli
+Portfi'yi geliştirirken kullanıcı deneyimini en üst seviyeye taşımayı hedefliyoruz.
+Görüş, öneri veya geri bildiriminiz varsa bizimle paylaşmaktan çekinmeyin.
+👉 Fibabanka kanallarından bize doğrudan ulaşabilirsiniz!
+
+made with 💝
