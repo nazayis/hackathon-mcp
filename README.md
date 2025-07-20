@@ -47,10 +47,13 @@ Projenin ana dizinleri ve dosyaları aşağıda açıklanmıştır:
             └── vector_db/          # Riskometre verileri için LanceDB vektör veritabanı
 ```
 
-Dashboard arayüzü:
+## Dashboard Arayüzü
 
 <img width="1600" height="716" alt="image" src="https://github.com/user-attachments/assets/95631cb1-5e42-4ea4-9380-a39665f613f9" />
 
+## Chatbot Arayüzü
+
+<img width="1265" height="634" alt="Screenshot 2025-07-20 at 23 45 33" src="https://github.com/user-attachments/assets/f4cd883b-45e1-4f5d-9402-575a6274edfb" />
 
 ## 🛠️ Kurulum ve Çalıştırma
 
