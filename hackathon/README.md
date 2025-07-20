@@ -93,4 +93,18 @@ Uygulama açıldığında, "💰 55.000 TL yatırım senaryosunu dene" butonuna 
 4.  **Portfolio Builder Agent:** Risk profiline ve 55.000 TL'lik bütçeye uygun, Riskometre'de öne çıkan düşük/orta riskli fon ve hisselerden bir sepet önerisi hazırlar.
 5.  **Team Leader (Portfolio Manager):** Ajanlardan gelen teknik çıktıları (JSON) yorumlar ve kullanıcıya doğal dilde, gerekçeleriyle birlikte bir yatırım planı sunar.
 
+55.000TL ile yatırım öneri tablosu:
+
+<img width="2130" height="922" alt="image" src="https://github.com/user-attachments/assets/a1f81a60-3440-4756-ba3b-2855b70db88c" />
+
+
+## Agent Yapısı (agent.py)
+
 <img width="910" height="824" alt="image" src="https://github.com/user-attachments/assets/56a4005d-c576-441e-9682-5d27545cd22a" />
+
+## 💬 Görüşleriniz Bizim İçin Değerli
+Portfi'yi geliştirirken kullanıcı deneyimini en üst seviyeye taşımayı hedefliyoruz.
+Görüş, öneri veya geri bildiriminiz varsa bizimle paylaşmaktan çekinmeyin.
+👉 Fibabanka kanallarından bize doğrudan ulaşabilirsiniz!
+
+                                       made with 💝
